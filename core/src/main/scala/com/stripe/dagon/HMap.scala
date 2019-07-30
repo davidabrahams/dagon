@@ -87,6 +87,9 @@ final class HMap[K[_], V[_]](protected val map: Map[K[_], V[_]]) extends Seriali
 
   def mapValues[V1[_]](f: FunctionK[V, V1]): HMap[K, V1] =
     HMap.from[K, V1](map.map { case (k,v) => k -> f(v) }.toMap)
+
+  def values: List[V[_]] =
+    map.values
 }
 
 object HMap {
